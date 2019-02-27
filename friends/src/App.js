@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Route, NavLink } from "react-router-dom";
+import { Route } from "react-router-dom";
 import axios from "axios";
 
 import "./App.css";
 
+import Navigation from "./components/Navigation";
 import FriendsList from "./components/FriendsList";
 import AddFriend from "./components/AddFriend";
+import UpdateFriend from "./components/UpdateFriend";
 
 const App = props => {
   const [friendsList, updateFriendsList] = useState([]);
@@ -35,10 +37,21 @@ const App = props => {
       });
   };
 
-  const updateFriendToDB = friend => {};
+  const updateFriendToDB = friend => {
+    return axios
+      .put(`http://localhost:5000/friends/${friend.id}`, {
+        name: friend.name,
+        age: friend.age,
+        email: friend.email
+      })
+      .then(res => {
+        fetchFriends();
+      })
+      .catch(e => console.log(e));
+  };
 
   const removeFriendFromDB = id => {
-    axios
+    return axios
       .delete(`http://localhost:5000/friends/${id}`)
       .then(res => {
         fetchFriends();
@@ -50,10 +63,8 @@ const App = props => {
 
   return (
     <div className="App">
-      <NavLink exact to="/">
-        Home
-      </NavLink>
-      <NavLink to="/addfriend">Add Friend</NavLink>
+      <Navigation />
+
       <Route
         exact
         path="/"
@@ -68,6 +79,12 @@ const App = props => {
       <Route
         path="/addfriend"
         render={props => <AddFriend {...props} addFriendToDB={addFriendToDB} />}
+      />
+      <Route
+        path="/friend/:id"
+        render={props => (
+          <UpdateFriend {...props} updateFriendToDB={updateFriendToDB} />
+        )}
       />
     </div>
   );
