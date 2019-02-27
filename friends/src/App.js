@@ -29,7 +29,6 @@ const App = props => {
       })
       .then(res => {
         fetchFriends();
-        console.log(res);
       })
       .catch(e => {
         console.log(e);

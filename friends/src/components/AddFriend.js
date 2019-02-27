@@ -8,12 +8,12 @@ const AddFriend = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (nameRef && ageRef && emailRef) {
-      addFriendToDB(
-        nameRef.current.value,
-        Number(ageRef.current.value),
-        emailRef.current.value
-      )
+    const nameRefValue = nameRef.current.value;
+    const ageRefValue = ageRef.current.value;
+    const emailRefValue = emailRef.current.value;
+
+    if (nameRefValue && ageRefValue !== 0 && emailRefValue) {
+      addFriendToDB(nameRefValue, Number(ageRefValue), emailRefValue)
         .then(res => props.history.push("/"))
         .catch(e => alert("Something went wrong..."));
     } else {
