@@ -4,6 +4,7 @@ import Friend from "./Friend";
 
 const FriendsList = props => {
   const { friendslist } = props;
+  const { removeFriendFromDB } = props;
 
   if (!friendslist) {
     return <h2>Loading your friends list...</h2>;
@@ -11,7 +12,11 @@ const FriendsList = props => {
   return (
     <div className="friends-list">
       {friendslist.map(friend => (
-        <Friend key={friend.id} friend={friend} />
+        <Friend
+          key={friend.id}
+          friend={friend}
+          removeFriendFromDB={removeFriendFromDB}
+        />
       ))}
     </div>
   );

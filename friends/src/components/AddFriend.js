@@ -24,7 +24,7 @@ const AddFriend = props => {
   return (
     <form className="add-friend-form" onSubmit={handleSubmit}>
       <input placeholder="Friend Name" ref={nameRef} />
-      <input placeholder="Friend Age" ref={ageRef} />
+      <input placeholder="Friend Age" ref={ageRef} type="number" />
       <input placeholder="Friend email" ref={emailRef} />
       <button>Add Friend!</button>
     </form>

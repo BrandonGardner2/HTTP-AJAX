@@ -35,6 +35,19 @@ const App = props => {
       });
   };
 
+  const updateFriendToDB = friend => {};
+
+  const removeFriendFromDB = id => {
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => {
+        fetchFriends();
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
   return (
     <div className="App">
       <NavLink exact to="/">
@@ -44,7 +57,13 @@ const App = props => {
       <Route
         exact
         path="/"
-        render={props => <FriendsList {...props} friendslist={friendsList} />}
+        render={props => (
+          <FriendsList
+            {...props}
+            friendslist={friendsList}
+            removeFriendFromDB={removeFriendFromDB}
+          />
+        )}
       />
       <Route
         path="/addfriend"
