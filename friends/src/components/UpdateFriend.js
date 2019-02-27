@@ -11,13 +11,18 @@ const UpdateFriend = props => {
         ageRef.current.value = friend.age;
         emailRef.current.value = friend.email;
       })
-      .catch(e => console.log(e));
+      .catch(e => {
+        nameRef.current.value = passedFriend.name;
+        ageRef.current.value = passedFriend.age;
+        emailRef.current.value = passedFriend.email;
+      });
   }, []);
 
   const nameRef = useRef();
   const ageRef = useRef();
   const emailRef = useRef();
   const { id } = props.match.params;
+  const passedFriend = props.location.state.friend;
   const updateFriendToDB = props.updateFriendToDB;
 
   const handleSubmit = e => {

@@ -18,7 +18,14 @@ const Friend = props => {
       <p>Age: {age}</p>
       <p>Email: {email}</p>
       <button onClick={removeFriend}>Remove Friend</button>
-      <Link to={`/friend/${id}`}>Update Friend</Link>
+      <Link
+        to={{
+          pathname: `/friend/${id}`,
+          state: { friend: props.friend }
+        }}
+      >
+        Update Friend
+      </Link>
     </div>
   );
 };
