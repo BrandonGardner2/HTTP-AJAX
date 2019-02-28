@@ -30,7 +30,7 @@ const App = props => {
         email
       })
       .then(res => {
-        fetchFriends();
+        updateFriendsList(res.data);
       })
       .catch(e => {
         console.log(e);
@@ -45,7 +45,7 @@ const App = props => {
         email: friend.email
       })
       .then(res => {
-        fetchFriends();
+        updateFriendsList(res.data);
       })
       .catch(e => console.log(e));
   };
@@ -54,7 +54,7 @@ const App = props => {
     return axios
       .delete(`http://localhost:5000/friends/${id}`)
       .then(res => {
-        fetchFriends();
+        updateFriendsList(res.data);
       })
       .catch(e => {
         console.log(e);
