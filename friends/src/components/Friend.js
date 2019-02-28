@@ -22,7 +22,7 @@ const FriendHeader = styled.h3`
   text-align: center;
 `;
 
-const Btn = styled.button`
+export const Btn = styled.button`
   border-radius: 5px;
   border: 1px solid black;
   color: white;
