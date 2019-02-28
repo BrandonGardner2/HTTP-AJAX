@@ -1,24 +1,13 @@
 import React, { useRef, useEffect } from "react";
-import axios from "axios";
 
 import { Btn } from "./Friend";
 import { Form, Input } from "./AddFriend";
 
 const UpdateFriend = props => {
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/friends/${id}`)
-      .then(res => {
-        const friend = res.data;
-        nameRef.current.value = friend.name;
-        ageRef.current.value = friend.age;
-        emailRef.current.value = friend.email;
-      })
-      .catch(e => {
-        nameRef.current.value = passedFriend.name;
-        ageRef.current.value = passedFriend.age;
-        emailRef.current.value = passedFriend.email;
-      });
+    nameRef.current.value = passedFriend.name;
+    ageRef.current.value = passedFriend.age;
+    emailRef.current.value = passedFriend.email;
   }, []);
 
   const nameRef = useRef();
