@@ -1,6 +1,14 @@
 import React from "react";
+import styled from "styled-components";
 
 import Friend from "./Friend";
+
+const FriendsListComponent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 2%;
+`;
 
 const FriendsList = props => {
   const { friendslist } = props;
@@ -10,7 +18,7 @@ const FriendsList = props => {
     return <h2>Loading your friends list...</h2>;
   }
   return (
-    <div className="friends-list">
+    <FriendsListComponent>
       {friendslist.map(friend => (
         <Friend
           key={friend.id}
@@ -18,7 +26,7 @@ const FriendsList = props => {
           removeFriendFromDB={removeFriendFromDB}
         />
       ))}
-    </div>
+    </FriendsListComponent>
   );
 };
 
