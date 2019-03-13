@@ -1,4 +1,28 @@
 import React, { useRef } from "react";
+import styled from "styled-components";
+
+import { Btn } from "./Friend";
+
+export const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3%;
+  background: white;
+  min-width: 60%;
+  margin: 0 auto;
+  border-radius: 5px;
+`;
+
+export const Input = styled.input`
+  display: flex;
+  height: 15px;
+  align-items: center;
+  padding-left: 1%;
+  margin-bottom: 8px;
+  width: 70%;
+`;
 
 const AddFriend = props => {
   const nameRef = useRef();
@@ -22,12 +46,12 @@ const AddFriend = props => {
   };
 
   return (
-    <form className="add-friend-form" onSubmit={handleSubmit}>
-      <input placeholder="Friend Name" ref={nameRef} />
-      <input placeholder="Friend Age" ref={ageRef} type="number" />
-      <input placeholder="Friend email" ref={emailRef} />
-      <button>Add Friend!</button>
-    </form>
+    <Form className="add-friend-form" onSubmit={handleSubmit}>
+      <Input placeholder="Friend Name" ref={nameRef} />
+      <Input placeholder="Friend Age" ref={ageRef} type="number" />
+      <Input placeholder="Friend email" ref={emailRef} />
+      <Btn>Add Friend!</Btn>
+    </Form>
   );
 };
 
